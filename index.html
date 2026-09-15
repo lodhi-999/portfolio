@@ -1,0 +1,846 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gaurav Lodhi | Data Analyst</title>
+
+    <meta name="description"
+          content="Gaurav Lodhi - Data Analyst specializing in SQL, Python, Power BI, Statistics and Business Analytics.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f14;
+            color: #e8edf2;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 20, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #202833;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aeb8c4;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4da3ff;
+        }
+
+        /* GENERAL */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            color: #8f9baa;
+            margin-bottom: 45px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid #263444;
+            border-radius: 30px;
+            color: #4da3ff;
+            font-size: 13px;
+            margin-bottom: 22px;
+            background: #111820;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 78px);
+            line-height: 1.05;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #4da3ff;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #b9c3ce;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #8f9baa;
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #4da3ff;
+            color: #06101c;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #73b8ff;
+        }
+
+        .btn-secondary {
+            border: 1px solid #354250;
+            color: #dce3ea;
+        }
+
+        .btn-secondary:hover {
+            border-color: #4da3ff;
+            color: #4da3ff;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            color: #a1acb8;
+            margin-bottom: 18px;
+        }
+
+        .highlight-box {
+            background: #111820;
+            border: 1px solid #222d38;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+        }
+
+        .highlight-box li {
+            padding: 9px 0;
+            color: #aab5c1;
+            border-bottom: 1px solid #202833;
+        }
+
+        .highlight-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #111820;
+            border: 1px solid #222d38;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #4da3ff;
+        }
+
+        .skill-card h3 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            color: #929eab;
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #111820;
+            border: 1px solid #222d38;
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #4da3ff;
+        }
+
+        .project-number {
+            color: #4da3ff;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #929eab;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech span {
+            background: #19222c;
+            color: #a9cfff;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #4da3ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* EXPERIENCE */
+
+        .experience-card {
+            border-left: 2px solid #4da3ff;
+            padding-left: 25px;
+            max-width: 800px;
+        }
+
+        .experience-card h3 {
+            color: #ffffff;
+            font-size: 22px;
+        }
+
+        .experience-card .company {
+            color: #4da3ff;
+            margin: 5px 0;
+        }
+
+        .experience-card .date {
+            color: #707d8a;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .experience-card p {
+            color: #9ca8b4;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-box p {
+            color: #929eab;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #202833;
+            padding: 25px;
+            text-align: center;
+            color: #687482;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .about-grid,
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            Gaurav<span>.</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                DATA ANALYST • BUSINESS ANALYTICS
+            </div>
+
+            <h1>
+                Gaurav <span>Lodhi</span>
+            </h1>
+
+            <h2>
+                Data Analyst | SQL • Python • Power BI • Excel
+            </h2>
+
+            <p>
+                I transform raw data into meaningful insights,
+                dashboards, and actionable business decisions.
+                My focus is on solving real-world problems using
+                data, statistics, and analytical thinking.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                </a>
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-subtitle">
+            Turning data into decisions.
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I am a Data Analyst with experience working
+                    across data analysis, business analytics,
+                    predictive modeling, and visualization.
+                </p>
+
+                <p>
+                    I enjoy breaking down complex business
+                    problems, finding patterns in data, and
+                    converting analysis into simple and
+                    actionable recommendations.
+                </p>
+
+                <p>
+                    My approach combines SQL, Python, statistics,
+                    Excel, and Power BI to build reliable
+                    analysis and decision-support solutions.
+                </p>
+
+            </div>
+
+            <div class="highlight-box">
+
+                <h3>What I Work On</h3>
+
+                <ul>
+                    <li>Business & Product Analytics</li>
+                    <li>Customer & User Analysis</li>
+                    <li>Marketing Analytics</li>
+                    <li>Predictive Modeling</li>
+                    <li>Dashboard Development</li>
+                    <li>Data Cleaning & Validation</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <h2 class="section-title">Technical Skills</h2>
+
+        <p class="section-subtitle">
+            Tools and techniques I use to solve analytical problems.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>SQL</h3>
+                <p>
+                    MySQL, Joins, CTEs, Subqueries,
+                    Window Functions, Aggregations,
+                    Data Analysis
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>
+                    Pandas, NumPy, Matplotlib,
+                    Scikit-learn, Data Cleaning,
+                    Exploratory Data Analysis
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Power BI</h3>
+                <p>
+                    Data Modeling, DAX, KPI Dashboards,
+                    Data Visualization and Business Reporting
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Excel</h3>
+                <p>
+                    Pivot Tables, Lookup Functions,
+                    SUMIF, Data Cleaning, Reporting
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Statistics</h3>
+                <p>
+                    Regression, Hypothesis Testing,
+                    Correlation, Clustering and
+                    Statistical Analysis
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Analytics</h3>
+                <p>
+                    Customer Analytics, Marketing Analytics,
+                    Funnel Analysis, Cohort Analysis
+                    and KPI Analysis
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <h2 class="section-title">Selected Projects</h2>
+
+        <p class="section-subtitle">
+            A selection of analytics and machine learning projects.
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+
+                <div class="project-number">01</div>
+
+                <h3>
+                    Marketplace Advertising Analytics
+                </h3>
+
+                <p>
+                    Analyzed advertising performance,
+                    revenue efficiency, campaign metrics,
+                    and optimization opportunities to
+                    support better marketing decisions.
+                </p>
+
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Analytics</span>
+                    <span>Marketing</span>
+                </div>
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="project-link">
+                    View on GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">02</div>
+
+                <h3>
+                    Lead Quality Predictive Modeling
+                </h3>
+
+                <p>
+                    Built a predictive model to identify
+                    high-quality leads and analyze the
+                    performance of different marketing
+                    channels.
+                </p>
+
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Statistics</span>
+                    <span>Logistic Regression</span>
+                </div>
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="project-link">
+                    View on GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">03</div>
+
+                <h3>
+                    Player Funnel & Profitability Analysis
+                </h3>
+
+                <p>
+                    Analyzed user registration,
+                    deposits, betting activity and
+                    player behavior to understand
+                    funnel performance and profitability.
+                </p>
+
+                <div class="tech">
+                    <span>SQL</span>
+                    <span>Python</span>
+                    <span>Data Analysis</span>
+                </div>
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="project-link">
+                    View on GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">04</div>
+
+                <h3>
+                    Flipkart Review Sentiment Analysis
+                </h3>
+
+                <p>
+                    Analyzed customer reviews and ratings
+                    to understand sentiment, customer
+                    experience and product perception.
+                </p>
+
+                <div class="tech">
+                    <span>Python</span>
+                    <span>NLP</span>
+                    <span>Sentiment Analysis</span>
+                </div>
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="project-link">
+                    View on GitHub →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <h2 class="section-title">Experience</h2>
+
+        <p class="section-subtitle">
+            Professional background.
+        </p>
+
+        <div class="experience-card">
+
+            <h3>Process Analyst</h3>
+
+            <div class="company">
+                Hindustan Zinc Limited (Vedanta Group)
+            </div>
+
+            <div class="date">
+                Previous Experience
+            </div>
+
+            <p>
+                Worked on process analysis, KPI tracking,
+                data-driven problem solving and process
+                optimization. Applied analytical thinking
+                to identify trends, improve processes and
+                support business decisions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container contact">
+
+        <div class="contact-box">
+
+            <h2 class="section-title">
+                Let's Connect
+            </h2>
+
+            <p>
+                Interested in data analytics, business problems,
+                and turning data into actionable insights?
+                Feel free to connect with me.
+            </p>
+
+            <div class="contact-links">
+
+                <a href="https://github.com/lodhi-999"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/"
+                   target="_blank"
+                   class="btn btn-primary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Gaurav Lodhi · Data Analyst
+
+</footer>
+
+
+</body>
+</html>
+```
