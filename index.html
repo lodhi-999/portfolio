@@ -137,7 +137,23 @@ nav {
 .chip { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); padding: 3px 12px; border-radius: 999px; font-size: 16px; }
 
 /* ================= LANGUAGES ================= */
-.lang-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
+.lang-wrap {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px;
+  display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center;
+}
+.lang-chart { position: relative; width: 260px; height: 260px; }
+.lang-center {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none; text-align: center; line-height: 1.1;
+}
+.lang-center strong { font-size: 40px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.lang-center span { font-size: 17px; color: var(--muted); font-style: italic; margin-top: 4px; }
+.lang-row { border-radius: var(--radius-sm); padding: 4px 8px; margin: -4px -8px; transition: background .2s; }
+.lang-row.hl { background: var(--detail); }
+/* Donut replaces the stacked bar; if the chart library can't load, fall back to the bar */
+.lang-wrap:not(.no-chart) .lang-stack { display: none; }
+.lang-wrap.no-chart { grid-template-columns: 1fr; }
+.lang-wrap.no-chart .lang-chart { display: none; }
 .lang-stack { display: flex; height: 16px; border-radius: 999px; overflow: hidden; margin-bottom: 30px; background: var(--line); }
 .lang-stack span { height: 100%; transition: width .8s ease; }
 .lang-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 48px; }
@@ -147,7 +163,7 @@ nav {
 .lang-pct { color: var(--muted); font-variant-numeric: tabular-nums; }
 .lang-bar { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; }
 .lang-bar span { display: block; height: 100%; border-radius: 999px; width: 0; transition: width .9s ease; }
-.lang-note { margin-top: 24px; font-size: 15px; color: var(--muted); font-style: italic; }
+.lang-note { grid-column: 1 / -1; margin-top: -12px; font-size: 15px; color: var(--muted); font-style: italic; }
 
 /* ================= SOFT SKILLS ================= */
 .soft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); }
@@ -341,6 +357,9 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   .nav-links.open { display: flex; }
   .hero { padding-top: 110px; }
   .about-grid, .projects-grid, .contact-grid, .lang-list { grid-template-columns: 1fr; }
+  .lang-wrap { grid-template-columns: 1fr; gap: 28px; padding: 24px; }
+  .lang-chart { width: 220px; height: 220px; margin: 0 auto; }
+  .lang-note { margin-top: 0; }
   .compact-grid, .soft-grid { grid-template-columns: 1fr; }
   .skill-row { grid-template-columns: 1fr; gap: 8px; }
   .exp-head { flex-direction: column; }
@@ -433,9 +452,18 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <h2>Tools I use</h2>
       <p>Share of My analysis work by Tools</p>
     </div>
-    <div class="lang-wrap">
-      <div class="lang-stack" id="lang-stack" aria-hidden="true"></div>
-      <div class="lang-list" id="lang-list"></div>
+    <div class="lang-wrap" id="lang-wrap">
+      <div class="lang-chart">
+        <canvas id="lang-chart" role="img" aria-label="Donut chart of tool usage"></canvas>
+        <div class="lang-center" aria-hidden="true">
+          <strong id="lang-center-value"></strong>
+          <span id="lang-center-label"></span>
+        </div>
+      </div>
+      <div>
+        <div class="lang-stack" id="lang-stack" aria-hidden="true"></div>
+        <div class="lang-list" id="lang-list"></div>
+      </div>
       <p class="lang-note" id="lang-note"></p>
     </div>
   </div>
@@ -552,6 +580,8 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   <iframe id="resume-frame" title="Resume PDF"></iframe>
 </dialog>
 
+<!-- Chart.js (donut chart in "Tools I use"). If it fails to load, the section falls back to bars. -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 
 <script>
 /* =====================================================================
@@ -698,8 +728,9 @@ const PORTFOLIO = {
       focus: [ { label: "Data Analysis", share: 100, color: "#88C0D0" } ],
       caption: "<strong>Fully a Data Analysis role</strong>",
       points: [
-        "Cleaned, analysed and reported on business data using SQL and Python & Excel",
-        "Gave Deliverables to track KPIs to Clients."
+        "Used ClickHouse SQL & Python to process and analyze large-scale clinical data",
+        "Built end-to-end, Git-based workflows with reproducible documentation",
+        "Developed an LLM-powered validation layer, improving data parsing accuracy to 95%+"
       ]
     },
     {
@@ -805,7 +836,7 @@ function drawLanguages(list, note) {
   $("#lang-stack").innerHTML = list.map((l, i) =>
     `<span style="width:0;background:${LANG_COLORS[i % LANG_COLORS.length]}" data-w="${l.percent / total * 100}"></span>`).join("");
   $("#lang-list").innerHTML = list.map((l, i) => `
-    <div>
+    <div class="lang-row" data-index="${i}">
       <div class="lang-item-head">
         <span class="lang-name"><span class="lang-dot" style="background:${LANG_COLORS[i % LANG_COLORS.length]}"></span>${esc(l.name)}</span>
         <span class="lang-pct">${l.percent}%</span>
@@ -822,6 +853,85 @@ function drawLanguages(list, note) {
     }, { threshold: 0.3 });
     io.observe($("#languages"));
   } else animate();
+
+  buildDonut(list);
+}
+
+/* ---- donut chart (Chart.js) ---- */
+let langChart = null;
+function buildDonut(list) {
+  const wrap = $("#lang-wrap");
+  if (typeof Chart === "undefined") { wrap.classList.add("no-chart"); return; }
+
+  const colors = list.map((_, i) => LANG_COLORS[i % LANG_COLORS.length]);
+  const rows = [...document.querySelectorAll(".lang-row")];
+  const top = list.reduce((a, b) => (b.percent > a.percent ? b : a), list[0]);
+
+  const setCenter = (item) => {
+    $("#lang-center-value").textContent = `${item.percent}%`;
+    $("#lang-center-label").textContent = item.name;
+  };
+  const highlight = (i) => {
+    rows.forEach((r, j) => r.classList.toggle("hl", j === i));
+    setCenter(i == null ? top : list[i]);
+  };
+  setCenter(top);
+  $("#lang-chart").setAttribute("aria-label",
+    "Donut chart of tool usage: " + list.map(l => `${l.name} ${l.percent}%`).join(", "));
+
+  const create = () => {
+    if (langChart) langChart.destroy();
+    Chart.defaults.font.family = '"Times New Roman", Times, serif';
+    langChart = new Chart($("#lang-chart"), {
+      type: "doughnut",
+      data: {
+        labels: list.map(l => l.name),
+        datasets: [{
+          data: list.map(l => l.percent),
+          backgroundColor: colors,
+          borderColor: getComputedStyle(document.documentElement).getPropertyValue("--surface").trim() || "#2E3440",
+          borderWidth: 3,
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        cutout: "68%",
+        maintainAspectRatio: false,
+        layout: { padding: 10 },
+        animation: ANIM ? { animateRotate: true, animateScale: false, duration: 1400, easing: "easeOutCubic" } : false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: "#3B4252", titleColor: "#ECEFF4", bodyColor: "#D8DEE9",
+            borderColor: "#4C566A", borderWidth: 1, padding: 10,
+            titleFont: { size: 15, weight: "bold" }, bodyFont: { size: 14 },
+            callbacks: { label: (ctx) => ` ${ctx.parsed}% of my analysis work` }
+          }
+        },
+        onHover: (evt, active) => highlight(active.length ? active[0].index : null)
+      }
+    });
+    $("#lang-chart").addEventListener("mouseleave", () => highlight(null));
+  };
+
+  // hovering a row in the list highlights its slice
+  rows.forEach((row, i) => {
+    row.addEventListener("mouseenter", () => {
+      if (!langChart) return;
+      langChart.setActiveElements([{ datasetIndex: 0, index: i }]);
+      langChart.update();
+      highlight(i);
+    });
+    row.addEventListener("mouseleave", () => {
+      if (!langChart) return;
+      langChart.setActiveElements([]);
+      langChart.update();
+      highlight(null);
+    });
+  });
+
+  // draw when scrolled into view so the donut animates in front of the visitor
+  if (ANIM) whenVisible(wrap, create, 0.3); else create();
 }
 
 async function renderLanguages() {
