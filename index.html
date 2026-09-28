@@ -10,13 +10,14 @@
   ================================================================
   HOW TO EDIT THIS PAGE
   ================================================================
-  1. Almost all text (projects, skills, experience, languages,
-     contact details) lives in the PORTFOLIO object inside the
-     <script> at the bottom of this file. Edit it there.
+  1. Almost all text (projects, skills, experience, education,
+     languages, contact details) lives in the PORTFOLIO object
+     inside the <script> at the bottom of this file. Edit it there.
   2. Colours live in the :root block right below (theme tokens).
   3. Put these files next to index.html:
-       profile.jpg  -> your LinkedIn photo (download it and save)
-       resume.pdf   -> your resume
+       profile.jpg          -> your LinkedIn photo
+       resume.pdf           -> your resume
+       nit-raipur-logo.png  -> NIT Raipur logo (for Education)
   ================================================================
 -->
 
@@ -215,8 +216,19 @@ nav {
 .exp-total .unit { display: block; font-size: 20px; color: var(--ink); font-weight: 700; margin-top: 6px; }
 .exp-total .sub { display: block; font-size: 15px; color: var(--muted); font-style: italic; }
 
-.roles { border-top: 2px solid var(--ink); }
-.role { display: grid; grid-template-columns: 120px 1fr 280px; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.roles { border-top: 2px solid var(--ink); position: relative; }
+/* Vertical timeline line on the left of the roles */
+.roles::before {
+  content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--line));
+}
+.role { display: grid; grid-template-columns: 120px 1fr 280px; gap: 32px; padding: 32px 0 32px 40px; border-bottom: 1px solid var(--line); align-items: start; position: relative; }
+/* Timeline dot for each role */
+.role::before {
+  content: ""; position: absolute; left: 0; top: 50px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 4px var(--band);
+}
 .role-dur .num { font-size: 52px; line-height: 1; font-weight: 700; color: var(--ink); }
 .role-dur .unit { display: block; color: var(--muted); font-size: 16px; margin-top: 4px; }
 .role-body h3 { font-size: 25px; color: var(--ink); line-height: 1.2; }
@@ -235,6 +247,37 @@ nav {
 .arrow span:last-child { padding-right: 30px; }
 .role-focus .caption { display: block; margin-top: 10px; font-size: 16px; color: var(--ink-2); }
 .role-focus .caption strong { color: var(--ink); }
+
+/* ================= EDUCATION ================= */
+.edu-list { display: grid; gap: 20px; }
+.edu-card {
+  display: grid; grid-template-columns: 88px 1fr auto; gap: 28px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+.edu-logo {
+  width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
+  background: #FFFFFF; border: 3px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+}
+.edu-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.edu-logo span { display: none; font-size: 22px; font-weight: 700; color: var(--on-accent); }
+.edu-logo.no-logo img { display: none; }
+.edu-logo.no-logo span { display: block; }
+.edu-body h3 { font-size: 25px; color: var(--ink); line-height: 1.2; }
+.edu-body .org { color: var(--accent); font-size: 19px; margin-top: 2px; }
+.edu-body .dates { color: var(--muted); font-size: 15px; font-style: italic; }
+.cgpa-ring {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--line) 0);
+  display: grid; place-items: center;
+}
+.cgpa-ring > div {
+  width: 72px; height: 72px; border-radius: 50%; background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1;
+}
+.cgpa-ring strong { font-size: 24px; color: var(--ink); }
+.cgpa-ring span { font-size: 13px; color: var(--muted); }
 
 /* ================= CONTACT ================= */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
@@ -297,8 +340,12 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   .skill-row { grid-template-columns: 1fr; gap: 8px; }
   .exp-head { flex-direction: column; }
   .exp-total { text-align: left; border-right: 0; border-left: 4px solid var(--accent); padding: 0 0 0 16px; }
-  .role { grid-template-columns: 1fr; gap: 14px; }
+  .role { grid-template-columns: 1fr; gap: 14px; padding-left: 32px; }
+  .role::before { top: 44px; }
   .role-focus { grid-column: auto; }
+  .edu-card { grid-template-columns: 72px 1fr; gap: 18px; padding: 20px; }
+  .edu-logo { width: 72px; height: 72px; }
+  .cgpa-ring { grid-column: 2; justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -319,6 +366,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><button class="btn btn-primary js-open-resume" type="button">View resume</button></li>
     </ul>
@@ -408,7 +456,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
 <section id="projects">
   <div class="container">
     <div class="section-head">
-      <h2>Selected projects</h2>
+      <h2>Key Projects</h2>
       <p>Analytics and machine learning work.</p>
     </div>
 
@@ -441,8 +489,19 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   </div>
 </section>
 
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="container">
+    <div class="section-head">
+      <h2>Education</h2>
+      <p>Academic background.</p>
+    </div>
+    <div class="edu-list" id="edu-list"></div>
+  </div>
+</section>
+
 <!-- ================= CONTACT ================= -->
-<section id="contact">
+<section id="contact" class="band">
   <div class="container contact-grid">
     <div class="contact-info">
       <div class="section-head" style="margin-bottom:18px">
@@ -460,7 +519,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     <form class="message-form" id="message-form" novalidate>
       <h3>Send me a message</h3>
       <div class="field">
-        <label for="f-name">Name <small></label>
+        <label for="f-name">Name</label>
         <input id="f-name" name="name" type="text" autocomplete="name">
       </div>
       <div class="field">
@@ -655,7 +714,22 @@ const PORTFOLIO = {
     }
   ],
   // Leave null to calculate automatically (rounded to nearest year), or set e.g. "2".
-  totalExperienceOverride: null
+  totalExperienceOverride: null,
+
+  // ---- Education ----
+  // logo: image file next to index.html; if missing, "logoText" shows in the circle.
+  // years: e.g. "2019 – 2023" (leave "" to hide)
+  education: [
+    {
+      degree: "B.Tech in Metallurgical Engineering",
+      institute: "National Institute of Technology (NIT) Raipur",
+      years: "",
+      logo: "nit-raipur-logo.png",
+      logoText: "NIT",
+      cgpa: 7.6,
+      cgpaMax: 10
+    }
+  ]
 };
 
 
@@ -838,6 +912,35 @@ function renderExperience() {
   }).join("");
 }
 
+/* ---- education ---- */
+function renderEducation() {
+  $("#edu-list").innerHTML = P.education.map(e => {
+    const pct = Math.max(0, Math.min(100, (e.cgpa / (e.cgpaMax || 10)) * 100));
+    return `
+      <article class="edu-card">
+        <div class="edu-logo">
+          <img data-src="${esc(e.logo)}" alt="${esc(e.institute)} logo">
+          <span>${esc(e.logoText || "")}</span>
+        </div>
+        <div class="edu-body">
+          <h3>${esc(e.degree)}</h3>
+          <p class="org">${esc(e.institute)}</p>
+          ${e.years ? `<p class="dates">${esc(e.years)}</p>` : ""}
+        </div>
+        <div class="cgpa-ring" style="--pct:${pct}" role="img" aria-label="CGPA ${esc(e.cgpa)} out of ${esc(e.cgpaMax || 10)}">
+          <div><strong>${esc(e.cgpa)}</strong><span>CGPA</span></div>
+        </div>
+      </article>`;
+  }).join("");
+
+  // load logos with a fallback to text if the image file is missing
+  document.querySelectorAll(".edu-logo img").forEach(img => {
+    img.onerror = () => img.parentElement.classList.add("no-logo");
+    if (img.dataset.src) img.src = img.dataset.src;
+    else img.parentElement.classList.add("no-logo");
+  });
+}
+
 /* ---- resume dialog ---- */
 function setupResume() {
   const dlg = $("#resume-dialog");
@@ -915,6 +1018,7 @@ renderLanguages();
 renderSoftSkills();
 renderProjects();
 renderExperience();
+renderEducation();
 setupResume();
 setupForm();
 setupMenu();
