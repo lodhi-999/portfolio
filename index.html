@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gaurav Lodhi | Data Analyst</title>
-<meta name="description" content="Gaurav Lodhi - Data Analyst specializing in SQL, Python, Power BI, Statistics , Data Science and Business Analytics.">
- 
+<meta name="description" content="Gaurav Lodhi - Data Analyst specializing in SQL, Python, Power BI, Statistics and Business Analytics.">
+
 <!--
   ================================================================
   HOW TO EDIT THIS PAGE
@@ -19,46 +19,48 @@
        resume.pdf   -> your resume
   ================================================================
 -->
- 
+
 <style>
-/* ================= THEME TOKENS (Nord "Snow Storm" light) ================= */
+/* ================= THEME TOKENS (Nord "Polar Night" dark) ================= */
 :root {
-  --bg:        #ECEFF4;   /* page background        (nord6) */
-  --band:      #E5E9F0;   /* alternate section band (nord5) */
-  --line:      #D8DEE9;   /* borders & rules        (nord4) */
-  --surface:   #FFFFFF;   /* project cards, form    */
-  --detail:    #E3EDF2;   /* project detail strip (different colour from card) */
-  --compact:   #F4F7FA;   /* "all projects" small cards */
- 
-  --ink:       #2E3440;   /* headings  (nord0) */
-  --ink-2:     #3B4252;   /* body text (nord1) */
-  --muted:     #4C566A;   /* secondary (nord3) */
- 
-  --accent:        #3B5B85;  /* buttons & links (darkened nord10 for contrast) */
-  --accent-hover:  #2E4A6F;
-  --accent-soft:   #5E81AC;  /* nord10 */
+  color-scheme: dark;
+  --bg:        #242933;   /* page background (deeper than nord0) */
+  --band:      #2E3440;   /* alternate section band (nord0) */
+  --line:      #434C5E;   /* borders & rules        (nord2) */
+  --surface:   #2E3440;   /* project cards, form    */
+  --detail:    #3B4252;   /* project detail strip (different colour from card) */
+  --compact:   #333A47;   /* "all projects" small cards */
+
+  --ink:       #ECEFF4;   /* headings  (nord6) */
+  --ink-2:     #D8DEE9;   /* body text (nord4) */
+  --muted:     #A5AFBF;   /* secondary text */
+
+  --accent:        #88C0D0;  /* buttons & links (nord8) */
+  --accent-hover:  #A3D3E0;
+  --accent-soft:   #81A1C1;  /* nord9 */
+  --on-accent:     #242933;  /* text on accent buttons */
   --frost:         #88C0D0;  /* nord8  */
   --green:         #A3BE8C;  /* nord14 */
-  --green-dark:    #4F6B3A;
+  --green-dark:    #A3BE8C;
   --orange:        #D08770;  /* nord12 */
   --yellow:        #EBCB8B;  /* nord13 */
   --purple:        #B48EAD;  /* nord15 */
- 
+
   --radius-lg: 14px;
   --radius-sm: 6px;
   --max: 1120px;
   --font: "Times New Roman", Times, serif;
 }
- 
+
 /* ================= BASE ================= */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 * { font-family: var(--font); }
 button, input, textarea, select { font: inherit; color: inherit; }
- 
+
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
-  background:  var(--bg);
-  color: #B48EAD;
+  background: var(--bg);
+  color: var(--ink-2);
   font-size: 18px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -67,15 +69,15 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
 img { max-width: 100%; display: block; }
 :focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; border-radius: 4px; }
- 
+
 .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 section { padding: 96px 0; }
 .band { background: var(--band); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
- 
+
 .section-head { margin-bottom: 44px; max-width: 640px; }
 .section-head h2 { font-size: 38px; line-height: 1.15; color: var(--ink); font-weight: 700; letter-spacing: -0.3px; }
 .section-head p { color: var(--muted); margin-top: 8px; font-size: 19px; font-style: italic; }
- 
+
 /* ================= BUTTONS ================= */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -84,15 +86,15 @@ section { padding: 96px 0; }
   border: 1px solid transparent; transition: background .2s, border-color .2s, color .2s;
 }
 .btn:hover { text-decoration: none; }
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-hover); color: #fff; }
-.btn-outline { border-color: #AEB9C9; color: var(--ink); background: transparent; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); }
+.btn-outline { border-color: #4C566A; color: var(--ink); background: transparent; }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
- 
+
 /* ================= NAV ================= */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(236, 239, 244, .92);
+  background: rgba(36, 41, 51, .92);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -102,9 +104,9 @@ nav {
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-links a { color: var(--muted); font-size: 17px; }
 .nav-links a:hover { color: var(--accent); }
-.nav-links .btn { padding: 7px 16px; font-size: 16px; color: #fff; }
+.nav-links .btn { padding: 7px 16px; font-size: 16px; color: var(--on-accent); }
 .menu-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 6px 12px; cursor: pointer; font-size: 16px; }
- 
+
 /* ================= HERO ================= */
 .hero { min-height: 92vh; display: flex; align-items: center; padding-top: 120px; }
 .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
@@ -113,7 +115,7 @@ nav {
 .hero-tools { font-size: 22px; color: var(--ink-2); margin-bottom: 18px; }
 .hero-intro { max-width: 600px; color: var(--muted); font-size: 19px; margin-bottom: 34px; }
 .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
- 
+
 /* Portrait: sharp on the left, blurred + fading on the right */
 .portrait {
   position: relative;
@@ -133,16 +135,15 @@ nav {
 }
 .portrait .fade-layer {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(236,239,244,0) 50%, rgba(236,239,244,.55) 80%, var(--bg) 100%);
+  background: linear-gradient(to right, rgba(36,41,51,0) 50%, rgba(36,41,51,.55) 80%, var(--bg) 100%);
 }
-.portrait .rule { position: absolute; left: 0; right: 0; top: 62%; height: 2px; background: var(--orange); opacity: .85; }
 .portrait .initials {
   position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
   font-size: 72px; font-weight: 700; color: var(--accent-soft);
 }
 .portrait.no-photo .initials { display: flex; }
 .portrait.no-photo img { display: none; }
- 
+
 /* ================= ABOUT ================= */
 .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; }
 .about-text p { margin-bottom: 18px; max-width: 62ch; }
@@ -150,14 +151,14 @@ nav {
 .focus-list h3 { font-size: 21px; color: var(--ink); padding: 14px 0 6px; }
 .focus-list ul { list-style: none; }
 .focus-list li { padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); }
- 
+
 /* ================= SKILLS (rows, not cards) ================= */
 .skill-rows { border-top: 2px solid var(--ink); }
 .skill-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
 .skill-row h3 { font-size: 22px; color: var(--ink); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); padding: 3px 12px; border-radius: 999px; font-size: 16px; }
- 
+.chip { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); padding: 3px 12px; border-radius: 999px; font-size: 16px; }
+
 /* ================= LANGUAGES ================= */
 .lang-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
 .lang-stack { display: flex; height: 16px; border-radius: 999px; overflow: hidden; margin-bottom: 30px; background: var(--line); }
@@ -170,29 +171,29 @@ nav {
 .lang-bar { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; }
 .lang-bar span { display: block; height: 100%; border-radius: 999px; width: 0; transition: width .9s ease; }
 .lang-note { margin-top: 24px; font-size: 15px; color: var(--muted); font-style: italic; }
- 
+
 /* ================= SOFT SKILLS ================= */
 .soft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); }
 .soft-item { padding: 24px 24px 24px 0; border-bottom: 1px solid var(--line); }
 .soft-item h3 { font-size: 21px; color: var(--ink); margin-bottom: 6px; }
 .soft-item p { color: var(--muted); font-size: 17px; }
- 
+
 /* ================= PROJECTS ================= */
 .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .project-card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
   overflow: hidden; display: flex; flex-direction: column;
-  box-shadow: 0 1px 0 rgba(46,52,64,.04), 0 10px 24px -18px rgba(46,52,64,.35);
+  box-shadow: 0 12px 28px -18px rgba(0,0,0,.6);
 }
 .project-main { padding: 28px 28px 22px; flex: 1; }
 .project-type { font-size: 16px; font-style: italic; color: var(--accent); margin-bottom: 6px; }
 .project-card h3 { font-size: 25px; line-height: 1.25; color: var(--ink); margin-bottom: 12px; }
 .project-card p { color: var(--ink-2); font-size: 17px; }
-.project-details { background: var(--detail); border-top: 1px solid #C9D9E2; padding: 18px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.project-details { background: var(--detail); border-top: 1px solid var(--line); padding: 18px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
 .tech { display: flex; flex-wrap: wrap; gap: 8px; }
-.tech span { background: var(--surface); color: var(--accent); border: 1px solid #C9D9E2; padding: 2px 10px; border-radius: var(--radius-sm); font-size: 15px; }
+.tech span { background: var(--bg); color: var(--accent); border: 1px solid #4C566A; padding: 2px 10px; border-radius: var(--radius-sm); font-size: 15px; }
 .project-link { font-weight: 700; font-size: 16px; }
- 
+
 .all-toggle-wrap { margin-top: 40px; display: flex; justify-content: center; }
 .all-projects { margin-top: 40px; }
 .all-projects[hidden] { display: none; }
@@ -205,7 +206,7 @@ nav {
 .compact-card dd { color: var(--ink-2); }
 .compact-card ul { padding-left: 18px; color: var(--ink-2); margin-bottom: 12px; }
 .compact-card .project-link { font-size: 15px; }
- 
+
 /* ================= EXPERIENCE ================= */
 .exp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 44px; }
 .exp-head .section-head { margin-bottom: 0; }
@@ -213,7 +214,7 @@ nav {
 .exp-total .num { font-size: 84px; line-height: .9; font-weight: 700; color: var(--accent); }
 .exp-total .unit { display: block; font-size: 20px; color: var(--ink); font-weight: 700; margin-top: 6px; }
 .exp-total .sub { display: block; font-size: 15px; color: var(--muted); font-style: italic; }
- 
+
 .roles { border-top: 2px solid var(--ink); }
 .role { display: grid; grid-template-columns: 120px 1fr 280px; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); align-items: start; }
 .role-dur .num { font-size: 52px; line-height: 1; font-weight: 700; color: var(--ink); }
@@ -223,7 +224,7 @@ nav {
 .role-body .dates { color: var(--muted); font-size: 15px; font-style: italic; margin-bottom: 12px; }
 .role-body ul { padding-left: 20px; }
 .role-body li { margin-bottom: 6px; }
- 
+
 .role-focus { padding-top: 6px; }
 .arrow {
   display: flex; height: 48px; width: 100%;
@@ -234,7 +235,7 @@ nav {
 .arrow span:last-child { padding-right: 30px; }
 .role-focus .caption { display: block; margin-top: 10px; font-size: 16px; color: var(--ink-2); }
 .role-focus .caption strong { color: var(--ink); }
- 
+
 /* ================= CONTACT ================= */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: start; }
 .contact-info p { color: var(--muted); margin-bottom: 26px; max-width: 42ch; }
@@ -242,39 +243,39 @@ nav {
 .contact-lines li { display: grid; grid-template-columns: 100px 1fr; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .contact-lines .k { color: var(--muted); font-style: italic; }
 .contact-lines a { word-break: break-word; }
- 
+
 .message-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; }
 .message-form h3 { font-size: 24px; color: var(--ink); margin-bottom: 18px; }
 .field { margin-bottom: 18px; }
 .field label { display: block; font-weight: 700; color: var(--ink); margin-bottom: 6px; font-size: 17px; }
 .field label small { font-weight: 400; color: var(--muted); font-style: italic; }
 .field input, .field textarea {
-  width: 100%; padding: 11px 14px; border: 1px solid #C3CCD9; border-radius: var(--radius-sm);
-  background: #FBFCFD; color: var(--ink); font-size: 17px;
+  width: 100%; padding: 11px 14px; border: 1px solid #4C566A; border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--ink); font-size: 17px;
 }
 .field textarea { min-height: 140px; resize: vertical; }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(94,129,172,.25); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(136,192,208,.25); }
 .hp { position: absolute; left: -9999px; }
 .form-status { margin-top: 14px; font-size: 16px; min-height: 1.5em; }
 .form-status.ok { color: var(--green-dark); }
-.form-status.err { color: #9C3B44; }
- 
+.form-status.err { color: #E8959C; }
+
 /* ================= RESUME DIALOG ================= */
 dialog.resume {
   width: min(960px, 94vw); height: min(90vh, 1100px);
   border: 1px solid var(--line); border-radius: var(--radius-lg);
   padding: 0; margin: auto; background: var(--surface); color: var(--ink);
 }
-dialog.resume::backdrop { background: rgba(46,52,64,.55); }
+dialog.resume::backdrop { background: rgba(0,0,0,.65); }
 .resume-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); background: var(--bg); }
 .resume-bar h3 { font-size: 20px; }
 .resume-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .resume-actions .btn { padding: 6px 14px; font-size: 15px; }
 .resume iframe { width: 100%; height: calc(100% - 62px); border: 0; }
- 
+
 /* ================= FOOTER ================= */
 footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; color: var(--muted); font-size: 15px; }
- 
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 960px) {
   .compact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -305,9 +306,9 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
 }
 </style>
 </head>
- 
+
 <body>
- 
+
 <!-- ================= NAVIGATION ================= -->
 <nav>
   <div class="nav-inner">
@@ -323,7 +324,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     </ul>
   </div>
 </nav>
- 
+
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <div class="container hero-grid">
@@ -339,17 +340,16 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
         <a class="btn btn-outline" data-href="linkedin" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
- 
+
     <div class="portrait" id="portrait">
       <img id="portrait-img" alt="Portrait of Gaurav Lodhi">
       <div class="blur-layer"></div>
       <div class="fade-layer"></div>
-      <div class="rule"></div>
       <div class="initials" data-bind="initials"></div>
     </div>
   </div>
 </header>
- 
+
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="container">
@@ -366,7 +366,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     </div>
   </div>
 </section>
- 
+
 <!-- ================= TECHNICAL SKILLS ================= -->
 <section id="skills" class="band">
   <div class="container">
@@ -377,7 +377,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     <div class="skill-rows" id="skill-rows"></div>
   </div>
 </section>
- 
+
 <!-- ================= LANGUAGES ================= -->
 <section id="languages">
   <div class="container">
@@ -392,7 +392,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     </div>
   </div>
 </section>
- 
+
 <!-- ================= SOFT SKILLS ================= -->
 <section id="soft-skills" class="band">
   <div class="container">
@@ -403,7 +403,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     <div class="soft-grid" id="soft-grid"></div>
   </div>
 </section>
- 
+
 <!-- ================= PROJECTS ================= -->
 <section id="projects">
   <div class="container">
@@ -411,22 +411,22 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <h2>Selected projects</h2>
       <p>Analytics and machine learning work.</p>
     </div>
- 
+
     <div class="projects-grid" id="featured-projects"></div>
- 
+
     <div class="all-toggle-wrap">
       <button class="btn btn-outline" id="all-toggle" type="button" aria-expanded="false" aria-controls="all-projects">
         Explore all projects
       </button>
     </div>
- 
+
     <div class="all-projects" id="all-projects" hidden>
       <h3 class="all-title">All projects in detail</h3>
       <div class="compact-grid" id="compact-grid"></div>
     </div>
   </div>
 </section>
- 
+
 <!-- ================= EXPERIENCE ================= -->
 <section id="experience" class="band">
   <div class="container">
@@ -440,7 +440,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     <div class="roles" id="roles"></div>
   </div>
 </section>
- 
+
 <!-- ================= CONTACT ================= -->
 <section id="contact">
   <div class="container contact-grid">
@@ -456,7 +456,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
         <li><span class="k">GitHub</span><a data-href="github" target="_blank" rel="noopener" data-bind="githubUser"></a></li>
       </ul>
     </div>
- 
+
     <form class="message-form" id="message-form" novalidate>
       <h3>Send me a message</h3>
       <div class="field">
@@ -477,9 +477,9 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
     </form>
   </div>
 </section>
- 
+
 <footer id="footer"></footer>
- 
+
 <!-- ================= RESUME VIEWER ================= -->
 <dialog class="resume" id="resume-dialog" aria-label="Resume">
   <div class="resume-bar">
@@ -492,8 +492,8 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   </div>
   <iframe id="resume-frame" title="Resume PDF"></iframe>
 </dialog>
- 
- 
+
+
 <script>
 /* =====================================================================
    PORTFOLIO DATA — EDIT EVERYTHING HERE
@@ -503,23 +503,23 @@ const PORTFOLIO = {
   tagline: "Data analyst focused on business and product analytics",
   headline: "SQL, Python, Power BI and Excel",
   intro: "I turn raw data into clear dashboards, sound analysis and decisions a business can act on, using statistics and plain-language storytelling.",
- 
+
   // ---- Contact (REPLACE WITH YOUR REAL DETAILS) ----
-  email: "your.email@example.com",        // messages from the form are delivered here
-  phone: "+91 00000 00000",
-  linkedin: "https://www.linkedin.com/in/your-profile/",
-  githubUser: "lodhi-999",
- 
+  email: "lodhigaurav999@gmail.com",        // messages from the form are delivered here
+  phone: "+91 7987350900",
+  linkedin: "https://www.linkedin.com/in/gaurav-lodhi999 ",
+  githubUser: "https://github.com/lodhi-999",
+
   // ---- Files placed next to index.html ----
   photo: "profile.jpg",    // your LinkedIn photo, downloaded and saved
   resume: "resume.pdf",
- 
+
   about: [
     "I am a data analyst with experience across data analysis, business analytics, predictive modelling and visualisation.",
     "I enjoy breaking down complex business problems, finding patterns in data and converting analysis into simple, actionable recommendations.",
     "My approach combines SQL, Python, statistics, Excel and Power BI to build reliable analysis and decision-support tools."
   ],
- 
+
   focusAreas: [
     "Business and product analytics",
     "Customer and user analysis",
@@ -528,16 +528,16 @@ const PORTFOLIO = {
     "Dashboard development",
     "Data cleaning and validation"
   ],
- 
+
   technicalSkills: [
     { name: "SQL",        items: ["MySQL", "Joins", "CTEs", "Subqueries", "Window functions", "Aggregations"] },
     { name: "Python",     items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "Data cleaning", "EDA"] },
     { name: "Power BI",   items: ["Data modelling", "DAX", "KPI dashboards", "Business reporting"] },
     { name: "Excel",      items: ["Pivot tables", "XLOOKUP / VLOOKUP", "SUMIFS", "Data cleaning", "Reporting"] },
-    { name: "Statistics", items: ["Regression", "Hypothesis testing", "Correlation", "Clustering"] },
-    { name: "Analytics",  items: ["Customer analytics", "Marketing analytics", "Funnel analysis", "Cohort analysis", "KPI analysis"] }
+    { name: "Statistics", items: ["Regression", "Hypothesis testing", "Correlation", "Clustering" ,"Time Series Analysis"] },
+    { name: "Analytics",  items: ["Customer analytics", "Marketing analytics", "Funnel analysis", "Cohort analysis"] }
   ],
- 
+
   // ---- Languages section ----
   // source: "manual" uses the percentages below.
   // source: "github" calculates them live from your public GitHub repos
@@ -545,14 +545,14 @@ const PORTFOLIO = {
   languages: {
     source: "manual",
     manual: [
-      { name: "Python",          percent: 45 },
-      { name: "SQL",             percent: 30 },
-      { name: "DAX (Power BI)",  percent: 15 },
-      { name: "Excel formulas",  percent: 10 }
+      { name: "Python",          percent: 40 },
+      { name: "SQL",             percent: 35 },
+      { name: "Power BI",  percent: 10 },
+      { name: "Excel formulas",  percent: 15 }
     ],
     note: "Based on time spent across my projects and roles."
   },
- 
+
   softSkills: [
     { title: "Stakeholder communication", text: "Explaining findings to non-technical teams in plain language and clear visuals." },
     { title: "Problem structuring",       text: "Breaking a vague business question into measurable, answerable parts." },
@@ -561,7 +561,7 @@ const PORTFOLIO = {
     { title: "Cross-functional teamwork", text: "Working alongside operations, marketing and management to ship results." },
     { title: "Ownership",                 text: "Taking an analysis from raw data to a delivered decision, on time." }
   ],
- 
+
   // ---- Projects ----
   // featured: true  -> shown as a large card
   // every project   -> shown in "Explore all projects" with full details
@@ -576,7 +576,7 @@ const PORTFOLIO = {
       tools: ["Pandas", "NumPy", "Matplotlib"],
       dataset: "Marketplace ad campaign data",
       highlights: ["Compared campaign efficiency across segments", "Flagged under-performing spend for reallocation"],
-      link: "https://github.com/lodhi-999"
+      link: "https://github.com/lodhi-999/Marketplace-Advertising-Revenue-Run-Rate-Efficiency-Analytics"
     },
     {
       featured: true,
@@ -588,7 +588,7 @@ const PORTFOLIO = {
       tools: ["Pandas", "Scikit-learn", "Statsmodels"],
       dataset: "Lead and marketing channel data",
       highlights: ["Scored leads by likelihood of being high quality", "Identified the channels producing the best leads"],
-      link: "https://github.com/lodhi-999"
+      link: "https://github.com/lodhi-999/Lead-Quality-Analysis-Predictive-Modeling"
     },
     {
       featured: true,
@@ -600,23 +600,26 @@ const PORTFOLIO = {
       tools: ["MySQL", "Pandas", "Matplotlib"],
       dataset: "Player registration, deposit and betting records",
       highlights: ["Measured drop-off at each funnel stage", "Linked player behaviour to profitability"],
-      link: "https://github.com/lodhi-999"
+      link: "https://github.com/lodhi-999/Player-Funnel-Profitability-Analysis-"
     },
     {
-      featured: true,
-      title: "Flipkart Review Sentiment Analysis",
-      type: "NLP, text classification",
-      summary: "Analysed customer reviews and ratings to understand sentiment, customer experience and product perception.",
+       featured: true,
+      title: "Sales & Marketing Analysis",
+      type: "Sales, product and campaign analysis",
+      summary: "Analyzed sales, product and marketing performance data for Supertails, a pet-product e-commerce platform. Identified top-performing product categories, evaluated campaign effectiveness across media channels, and gave data-driven recommendations to boost revenue.",
       languages: ["Python"],
-      technique: "Text preprocessing, sentiment scoring",
-      tools: ["Pandas", "NLTK", "Matplotlib"],
-      dataset: "Flipkart product reviews and ratings",
-      highlights: ["Classified reviews as positive, neutral or negative", "Surfaced recurring themes in negative feedback"],
-      link: "https://github.com/lodhi-999"
+      technique: "Group-by aggregations, time-series analysis, campaign funnel analysis (CTR, CVR)",
+      tools: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook"],
+      dataset: "Supertails sales, product and marketing campaign data (May–July)",
+      highlights: [
+        "Orders grew 22% and revenue 18% from May to July",
+        "Dry Food drove 48%+ of revenue; Royal Canin was the top brand"
+      ],
+      link: "https://github.com/lodhi-999/Sales-Marketing-Analysis"
     }
     // Add more projects here. Set featured: false to show them only in "Explore all projects".
   ],
- 
+
   // ---- Experience ----
   // Durations are calculated from "months":
   //   under 12 months -> shown as months (e.g. 10 months)
@@ -626,19 +629,19 @@ const PORTFOLIO = {
     {
       title: "Data Analyst Intern",
       company: "Company Name",
-      dates: "Month Year – Month Year",
+      dates: "Nov 2025 – Aug 2026",
       months: 10,
       focus: [ { label: "Data Analysis", share: 100, color: "#88C0D0" } ],
       caption: "<strong>Fully a data analysis role</strong>",
       points: [
-        "Cleaned, analysed and reported on business data using SQL and Python.",
-        "Built dashboards to track KPIs for stakeholders."
+        "Cleaned, analysed and reported on business data using SQL and Python & Excel",
+        "Gave Deliverables to track KPIs to Clients."
       ]
     },
     {
       title: "Process Analyst",
-      company: "Hindustan Zinc Limited (Vedanta Group)",
-      dates: "Month Year – Month Year",
+      company: "Hindustan Zinc Limited (Vedanta)",
+      dates: "Sep 2023 – Oct 2024",
       months: 13,
       focus: [
         { label: "Data Analysis", share: 55, color: "#88C0D0" },
@@ -654,8 +657,8 @@ const PORTFOLIO = {
   // Leave null to calculate automatically (rounded to nearest year), or set e.g. "2".
   totalExperienceOverride: null
 };
- 
- 
+
+
 /* =====================================================================
    RENDERING — you normally don't need to edit below this line
    ===================================================================== */
@@ -663,19 +666,19 @@ const $ = (sel) => document.querySelector(sel);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
 const P = PORTFOLIO;
 const LANG_COLORS = ["#5E81AC", "#88C0D0", "#EBCB8B", "#A3BE8C", "#B48EAD", "#D08770", "#81A1C1", "#8FBCBB"];
- 
+
 function formatDuration(m) {
   if (m < 12) return { num: String(m), unit: m === 1 ? "month" : "months" };
   const y = Math.floor(m / 12), r = m % 12;
   return { num: r ? `${y}.${r}` : String(y), unit: "years" };
 }
- 
+
 /* ---- simple text + link bindings ---- */
 function bindBasics() {
   const initials = P.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   const values = { ...P, initials };
   document.querySelectorAll("[data-bind]").forEach(el => { el.textContent = values[el.dataset.bind] ?? ""; });
- 
+
   const links = {
     github: `https://github.com/${P.githubUser}`,
     linkedin: P.linkedin,
@@ -683,20 +686,20 @@ function bindBasics() {
     tel: `tel:${P.phone.replace(/[^\d+]/g, "")}`
   };
   document.querySelectorAll("[data-href]").forEach(el => { el.href = links[el.dataset.href]; });
- 
+
   // Photo with graceful fallback to initials
   const img = $("#portrait-img");
   img.onerror = () => $("#portrait").classList.add("no-photo");
   img.src = P.photo;
- 
+
   $("#footer").textContent = `© ${new Date().getFullYear()} ${P.name}, Data Analyst`;
 }
- 
+
 function renderAbout() {
   $("#about-text").innerHTML = P.about.map(p => `<p>${esc(p)}</p>`).join("");
   $("#focus-list").innerHTML = P.focusAreas.map(f => `<li>${esc(f)}</li>`).join("");
 }
- 
+
 function renderSkills() {
   $("#skill-rows").innerHTML = P.technicalSkills.map(s => `
     <div class="skill-row">
@@ -704,7 +707,7 @@ function renderSkills() {
       <div class="chips">${s.items.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div>
     </div>`).join("");
 }
- 
+
 /* ---- languages ---- */
 async function fetchGitHubLanguages(user) {
   const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100`);
@@ -722,7 +725,7 @@ async function fetchGitHubLanguages(user) {
   return Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 6)
     .map(([name, bytes]) => ({ name, percent: +(bytes / sum * 100).toFixed(1) }));
 }
- 
+
 function drawLanguages(list, note) {
   const total = list.reduce((a, l) => a + l.percent, 0) || 1;
   $("#lang-stack").innerHTML = list.map((l, i) =>
@@ -736,7 +739,7 @@ function drawLanguages(list, note) {
       <div class="lang-bar"><span style="background:${LANG_COLORS[i % LANG_COLORS.length]}" data-w="${l.percent}"></span></div>
     </div>`).join("");
   $("#lang-note").textContent = note;
- 
+
   // animate bars once the section scrolls into view
   const animate = () => document.querySelectorAll("#languages [data-w]").forEach(el => { el.style.width = el.dataset.w + "%"; });
   if ("IntersectionObserver" in window) {
@@ -746,7 +749,7 @@ function drawLanguages(list, note) {
     io.observe($("#languages"));
   } else animate();
 }
- 
+
 async function renderLanguages() {
   const cfg = P.languages;
   if (cfg.source === "github") {
@@ -758,12 +761,12 @@ async function renderLanguages() {
   }
   drawLanguages(cfg.manual, cfg.note);
 }
- 
+
 function renderSoftSkills() {
   $("#soft-grid").innerHTML = P.softSkills.map(s => `
     <div class="soft-item"><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>`).join("");
 }
- 
+
 /* ---- projects ---- */
 function renderProjects() {
   $("#featured-projects").innerHTML = P.projects.filter(p => p.featured).map(p => `
@@ -778,7 +781,7 @@ function renderProjects() {
         <a class="project-link" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub</a>
       </div>
     </article>`).join("");
- 
+
   $("#compact-grid").innerHTML = P.projects.map(p => `
     <article class="compact-card">
       <h4>${esc(p.title)}</h4>
@@ -792,7 +795,7 @@ function renderProjects() {
       ${p.highlights?.length ? `<ul>${p.highlights.map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
       <a class="project-link" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub</a>
     </article>`).join("");
- 
+
   const btn = $("#all-toggle"), panel = $("#all-projects");
   btn.addEventListener("click", () => {
     const open = panel.hidden;
@@ -802,7 +805,7 @@ function renderProjects() {
     if (open) panel.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
- 
+
 /* ---- experience ---- */
 function renderExperience() {
   const totalMonths = P.experience.reduce((a, r) => a + r.months, 0);
@@ -811,7 +814,7 @@ function renderExperience() {
     <div class="num">${esc(totalYears)}</div>
     <span class="unit">years of experience</span>
     <span class="sub">${totalMonths} months across ${P.experience.length} roles</span>`;
- 
+
   $("#roles").innerHTML = P.experience.map(r => {
     const d = formatDuration(r.months);
     const sum = r.focus.reduce((a, f) => a + f.share, 0) || 1;
@@ -834,7 +837,7 @@ function renderExperience() {
       </article>`;
   }).join("");
 }
- 
+
 /* ---- resume dialog ---- */
 function setupResume() {
   const dlg = $("#resume-dialog");
@@ -849,7 +852,7 @@ function setupResume() {
   $("#resume-close").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 }
- 
+
 /* ---- contact form (delivered to your inbox via FormSubmit) ---- */
 function setupForm() {
   const form = $("#message-form"), status = $("#form-status"), btn = $("#f-submit");
@@ -857,7 +860,7 @@ function setupForm() {
     e.preventDefault();
     status.className = "form-status";
     const email = form.email.value.trim(), message = form.message.value.trim();
- 
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       status.textContent = "Enter a valid email address so I can reply.";
       status.classList.add("err"); form.email.focus(); return;
@@ -867,7 +870,7 @@ function setupForm() {
       status.classList.add("err"); form.message.focus(); return;
     }
     if (form._honey.value) return; // bot trap
- 
+
     btn.disabled = true; btn.textContent = "Sending…";
     try {
       const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(P.email)}`, {
@@ -894,7 +897,7 @@ function setupForm() {
     }
   });
 }
- 
+
 /* ---- mobile menu ---- */
 function setupMenu() {
   const t = $(".menu-toggle"), links = $("#nav-links");
@@ -904,7 +907,7 @@ function setupMenu() {
   });
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
 }
- 
+
 bindBasics();
 renderAbout();
 renderSkills();
@@ -918,4 +921,3 @@ setupMenu();
 </script>
 </body>
 </html>
- 
