@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gaurav Lodhi | Data Analyst</title>
 <meta name="description" content="Gaurav Lodhi - Data Analyst specializing in SQL, Python, Power BI, Statistics and Business Analytics.">
+<link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E3440'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Times New Roman,Times,serif' font-weight='700' font-size='32' fill='%2388C0D0'%3EGL%3C/text%3E%3C/svg%3E">
+<script>
+  /* Turn on animations only for visitors who haven't asked for reduced motion */
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("anim");
+</script>
 
 <!--
   ================================================================
@@ -15,7 +20,6 @@
      inside the <script> at the bottom of this file. Edit it there.
   2. Colours live in the :root block right below (theme tokens).
   3. Put these files next to index.html:
-       profile.jpg          -> your LinkedIn photo
        resume.pdf           -> your resume
        nit-raipur-logo.png  -> NIT Raipur logo (for Education)
   ================================================================
@@ -110,40 +114,12 @@ nav {
 
 /* ================= HERO ================= */
 .hero { min-height: 92vh; display: flex; align-items: center; padding-top: 120px; }
-.hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
+.hero-grid { display: block; }
 .hero-role { color: var(--accent); font-size: 19px; font-style: italic; margin-bottom: 14px; }
 .hero h1 { font-size: clamp(52px, 8vw, 88px); line-height: 1; color: var(--ink); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 22px; }
 .hero-tools { font-size: 22px; color: var(--ink-2); margin-bottom: 18px; }
 .hero-intro { max-width: 600px; color: var(--muted); font-size: 19px; margin-bottom: 34px; }
 .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
-
-/* Portrait: sharp on the left, blurred + fading on the right */
-.portrait {
-  position: relative;
-  width: clamp(210px, 24vw, 300px);
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--band);
-}
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.portrait .blur-layer {
-  position: absolute; inset: 0;
-  backdrop-filter: blur(9px) saturate(.9);
-  -webkit-backdrop-filter: blur(9px) saturate(.9);
-  -webkit-mask-image: linear-gradient(to right, transparent 38%, #000 88%);
-          mask-image: linear-gradient(to right, transparent 38%, #000 88%);
-}
-.portrait .fade-layer {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(36,41,51,0) 50%, rgba(36,41,51,.55) 80%, var(--bg) 100%);
-}
-.portrait .initials {
-  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
-  font-size: 72px; font-weight: 700; color: var(--accent-soft);
-}
-.portrait.no-photo .initials { display: flex; }
-.portrait.no-photo img { display: none; }
 
 /* ================= ABOUT ================= */
 .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; }
@@ -319,6 +295,37 @@ dialog.resume::backdrop { background: rgba(0,0,0,.65); }
 /* ================= FOOTER ================= */
 footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; color: var(--muted); font-size: 15px; }
 
+/* ================= ANIMATIONS ================= */
+/* 1. Fade-up on scroll */
+.anim .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s ease; }
+.anim .reveal.in { opacity: 1; transform: none; }
+
+/* 2. Count-up numbers keep a steady width while counting */
+.num, .cgpa-ring strong { font-variant-numeric: tabular-nums; }
+
+/* 4. Timeline line grows with scroll; dots pop in when reached */
+.anim .roles::before { transform: scaleY(var(--draw, 0)); transform-origin: top; transition: transform .15s linear; }
+.anim .role::before { transform: scale(0); transition: transform .45s cubic-bezier(.34, 1.56, .64, 1); }
+.anim .role.reached::before { transform: scale(1); }
+
+/* 6. Role arrows slide in from the left when their dot is reached */
+.anim .arrow { opacity: 0; transform: translateX(-36px); transition: opacity .7s ease .15s, transform .7s ease .15s; }
+.anim .role.reached .arrow { opacity: 1; transform: none; }
+
+/* 5. Card lift on hover (mouse devices only) */
+.project-card { transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+.compact-card { transition: transform .25s ease, border-color .25s ease; }
+@media (hover: hover) {
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -22px rgba(0,0,0,.8); border-color: var(--accent-soft); }
+  .compact-card:hover { transform: translateY(-3px); border-color: var(--accent-soft); }
+}
+
+/* Extra: reading-progress bar under the nav */
+.scroll-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+
+/* Extra: highlight the nav link of the section you're reading */
+.nav-links a.active { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 6px; }
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 960px) {
   .compact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -333,8 +340,6 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 28px; background: var(--bg); border-bottom: 1px solid var(--line); }
   .nav-links.open { display: flex; }
   .hero { padding-top: 110px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-  .portrait { order: -1; width: 190px; }
   .about-grid, .projects-grid, .contact-grid, .lang-list { grid-template-columns: 1fr; }
   .compact-grid, .soft-grid { grid-template-columns: 1fr; }
   .skill-row { grid-template-columns: 1fr; gap: 8px; }
@@ -371,6 +376,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <li><button class="btn btn-primary js-open-resume" type="button">View resume</button></li>
     </ul>
   </div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 </nav>
 
 <!-- ================= HERO ================= -->
@@ -389,12 +395,6 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       </div>
     </div>
 
-    <div class="portrait" id="portrait">
-      <img id="portrait-img" alt="Portrait of Gaurav Lodhi">
-      <div class="blur-layer"></div>
-      <div class="fade-layer"></div>
-      <div class="initials" data-bind="initials"></div>
-    </div>
   </div>
 </header>
 
@@ -570,8 +570,13 @@ const PORTFOLIO = {
   githubUser: "lodhi-999",
 
   // ---- Files placed next to index.html ----
-  photo: "profile.jpg",    // your LinkedIn photo, downloaded and saved
   resume: "resume.pdf",
+
+  // ---- Browser-tab icon ----
+  // style: "initials"        -> "GL" in a rounded square
+  //        "chart"           -> three rising bars
+  //        "initials-chart"  -> "GL" with a small rising line underneath
+  favicon: { style: "initials", text: "GL", background: "#2E3440", color: "#88C0D0" },
 
   about: [
     "I am a data analyst with experience across data analysis, business analytics, predictive modelling and visualisation.",
@@ -760,11 +765,6 @@ function bindBasics() {
     tel: `tel:${P.phone.replace(/[^\d+]/g, "")}`
   };
   document.querySelectorAll("[data-href]").forEach(el => { el.href = links[el.dataset.href]; });
-
-  // Photo with graceful fallback to initials
-  const img = $("#portrait-img");
-  img.onerror = () => $("#portrait").classList.add("no-photo");
-  img.src = P.photo;
 
   $("#footer").textContent = `© ${new Date().getFullYear()} ${P.name}, Data Analyst`;
 }
@@ -1001,6 +1001,111 @@ function setupForm() {
   });
 }
 
+/* ---- favicon ---- */
+function setFavicon() {
+  const f = P.favicon || {};
+  const bg = f.background || "#2E3440", fg = f.color || "#88C0D0", txt = esc(f.text || "GL");
+  const font = "font-family='Times New Roman,Times,serif' font-weight='700'";
+  const shapes = {
+    "initials": `<text x='32' y='44' text-anchor='middle' ${font} font-size='32' fill='${fg}'>${txt}</text>`,
+    "chart": `<rect x='13' y='36' width='10' height='16' rx='2' fill='${fg}'/><rect x='27' y='26' width='10' height='26' rx='2' fill='${fg}'/><rect x='41' y='14' width='10' height='38' rx='2' fill='${fg}'/>`,
+    "initials-chart": `<text x='32' y='36' text-anchor='middle' ${font} font-size='28' fill='${fg}'>${txt}</text><polyline points='12,53 24,47 36,50 52,41' fill='none' stroke='${fg}' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/>`
+  };
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='${bg}'/>${shapes[f.style] || shapes.initials}</svg>`;
+  $("#favicon").href = "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
+/* ---- animations ---- */
+const ANIM = document.documentElement.classList.contains("anim");
+
+function tween(duration, onFrame) {
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min(1, (now - start) / duration);
+    onFrame(1 - Math.pow(1 - t, 3));               // ease-out
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function whenVisible(el, callback, threshold = 0.5) {
+  if (!("IntersectionObserver" in window)) return callback();
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { callback(); io.disconnect(); }
+  }, { threshold });
+  io.observe(el);
+}
+
+function setupAnimations() {
+  if (!ANIM) return;
+
+  // 1. Fade-up for every section
+  document.querySelectorAll(".hero > .container, section > .container").forEach(el => {
+    el.classList.add("reveal");
+    whenVisible(el, () => el.classList.add("in"), 0.12);
+  });
+
+  // 2 + 3. Count-up numbers (and the CGPA ring fills along with its number)
+  document.querySelectorAll("#exp-total .num, .role-dur .num, .cgpa-ring strong").forEach(el => {
+    const finalText = el.textContent.trim();
+    const target = parseFloat(finalText);
+    if (isNaN(target)) return;
+    const decimals = (finalText.split(".")[1] || "").length;
+    const ring = el.closest(".cgpa-ring");
+    const ringTarget = ring ? parseFloat(ring.style.getPropertyValue("--pct")) || 0 : 0;
+
+    el.textContent = (0).toFixed(decimals);
+    if (ring) ring.style.setProperty("--pct", 0);
+
+    whenVisible(el, () => tween(1500, e => {
+      el.textContent = e >= 1 ? finalText : (target * e).toFixed(decimals);
+      if (ring) ring.style.setProperty("--pct", ringTarget * e);
+    }), 0.6);
+  });
+}
+
+/* 4 + 6. Timeline grows with scroll, and extra: reading-progress bar */
+let timelineMax = 0;
+function onScroll() {
+  const doc = document.documentElement;
+  const progress = doc.scrollTop / ((doc.scrollHeight - doc.clientHeight) || 1);
+  $("#scroll-progress").style.transform = `scaleX(${progress})`;
+
+  if (!ANIM) return;
+  const roles = $("#roles");
+  const rect = roles.getBoundingClientRect();
+  const p = Math.max(0, Math.min(1, (window.innerHeight * 0.7 - rect.top) / rect.height));
+  timelineMax = Math.max(timelineMax, p);
+  roles.style.setProperty("--draw", timelineMax);
+  roles.querySelectorAll(".role").forEach(role => {
+    if (role.offsetTop + 50 <= timelineMax * rect.height + 1) role.classList.add("reached");
+  });
+}
+
+function setupScroll() {
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; onScroll(); });
+  }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+}
+
+/* Extra: highlight the current section in the nav */
+function setupActiveNav() {
+  if (!("IntersectionObserver" in window)) return;
+  const links = [...document.querySelectorAll(".nav-links a[href^='#']")];
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  links.forEach(a => { const sec = document.querySelector(a.getAttribute("href")); if (sec) io.observe(sec); });
+}
+
 /* ---- mobile menu ---- */
 function setupMenu() {
   const t = $(".menu-toggle"), links = $("#nav-links");
@@ -1022,6 +1127,10 @@ renderEducation();
 setupResume();
 setupForm();
 setupMenu();
+setFavicon();
+setupAnimations();
+setupScroll();
+setupActiveNav();
 </script>
 </body>
 </html>
