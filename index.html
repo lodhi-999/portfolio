@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gaurav Lodhi | Data Analyst</title>
 <meta name="description" content="Gaurav Lodhi - Data Analyst specializing in SQL, Python, Power BI, Statistics and Business Analytics.">
+
+<!-- Link preview for LinkedIn, WhatsApp, Slack etc. Change the address if your site URL is different. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lodhi-999.github.io/">
+<meta property="og:title" content="Gaurav Lodhi | Data Analyst">
+<meta property="og:description" content="SQL, Python, Power BI, Excel and AWS. Turning raw data into business decisions.">
+<meta property="og:image" content="https://lodhi-999.github.io/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gaurav Lodhi, Data Analyst: SQL, Python, Power BI, Excel, AWS">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E3440'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Times New Roman,Times,serif' font-weight='700' font-size='32' fill='%2388C0D0'%3EGL%3C/text%3E%3C/svg%3E">
 <script>
   /* Turn on animations only for visitors who haven't asked for reduced motion */
@@ -132,7 +143,17 @@ nav {
 /* ================= SKILLS (rows, not cards) ================= */
 .skill-rows { border-top: 2px solid var(--ink); }
 .skill-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
-.skill-row h3 { font-size: 22px; color: var(--ink); }
+.skill-row h3 { font-size: 22px; color: var(--ink); display: flex; align-items: center; gap: 12px; }
+
+/* Icon strip (SQL | Python | Power BI | Excel | AWS) */
+.ico { width: 24px; height: 24px; fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.tool-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  background: var(--detail); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 16px 10px; margin-bottom: 36px;
+}
+.tool-strip .tool { display: flex; align-items: center; gap: 10px; padding: 4px 26px; font-size: 18px; color: var(--ink); }
+.tool-strip .tool + .tool { border-left: 1px solid #4C566A; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); padding: 3px 12px; border-radius: 999px; font-size: 16px; }
 
@@ -362,6 +383,9 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
   .lang-note { margin-top: 0; }
   .compact-grid, .soft-grid { grid-template-columns: 1fr; }
   .skill-row { grid-template-columns: 1fr; gap: 8px; }
+  .tool-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 0; padding: 14px; }
+  .tool-strip .tool { padding: 4px 12px; }
+  .tool-strip .tool + .tool { border-left: 0; }
   .exp-head { flex-direction: column; }
   .exp-total { text-align: left; border-right: 0; border-left: 4px solid var(--accent); padding: 0 0 0 16px; }
   .role { grid-template-columns: 1fr; gap: 14px; padding-left: 32px; }
@@ -441,6 +465,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <h2>Technical skills</h2>
       <p>Tools and techniques I use to solve analytical problems.</p>
     </div>
+    <div class="tool-strip" id="tool-strip"></div>
     <div class="skill-rows" id="skill-rows"></div>
   </div>
 </section>
@@ -623,13 +648,25 @@ const PORTFOLIO = {
     "Data cleaning and validation"
   ],
 
+  // Icon strip at the top of Technical skills.
+  // Available icons: sql, python, powerbi, excel, aws, stats, analytics
+  toolStrip: [
+    { name: "SQL",      icon: "sql" },
+    { name: "Python",   icon: "python" },
+    { name: "Power BI", icon: "powerbi" },
+    { name: "Excel",    icon: "excel" },
+    { name: "AWS",      icon: "aws" }
+  ],
+
   technicalSkills: [
-    { name: "SQL",        items: ["MySQL", "Joins", "CTEs", "Subqueries", "Window functions", "Aggregations"] },
-    { name: "Python",     items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "Data cleaning", "EDA"] },
-    { name: "Power BI",   items: ["Data modelling", "DAX", "KPI dashboards", "Business reporting"] },
-    { name: "Excel",      items: ["Pivot tables", "XLOOKUP / VLOOKUP", "SUMIFS", "Data cleaning", "Reporting"] },
-    { name: "Statistics", items: ["Regression", "Hypothesis testing", "Correlation", "Clustering" ,"Time Series Analysis"] },
-    { name: "Analytics",  items: ["Customer analytics", "Marketing analytics", "Funnel analysis", "Cohort analysis"] }
+    { name: "SQL",        icon: "sql",       items: ["MySQL", "Joins", "CTEs", "Subqueries", "Window functions", "Aggregations"] },
+    { name: "Python",     icon: "python",    items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "Data cleaning", "EDA"] },
+    { name: "Power BI",   icon: "powerbi",   items: ["Data modelling", "DAX", "KPI dashboards", "Business reporting"] },
+    { name: "Excel",      icon: "excel",     items: ["Pivot tables", "XLOOKUP / VLOOKUP", "SUMIFS", "Data cleaning", "Reporting"] },
+    // AWS: edit the list to the services you have actually used
+    { name: "AWS",        icon: "aws",       items: ["Amazon S3", "Amazon Athena", "Amazon Redshift"] },
+    { name: "Statistics", icon: "stats",     items: ["Regression", "Hypothesis testing", "Correlation", "Clustering" ,"Time Series Analysis"] },
+    { name: "Analytics",  icon: "analytics", items: ["Customer analytics", "Marketing analytics", "Funnel analysis", "Cohort analysis"] }
   ],
 
   // ---- Languages section ----
@@ -805,10 +842,25 @@ function renderAbout() {
   $("#focus-list").innerHTML = P.focusAreas.map(f => `<li>${esc(f)}</li>`).join("");
 }
 
+/* ---- line icons (drawn in code, no image files needed) ---- */
+const ICONS = {
+  sql: '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>',
+  python: '<path d="M12 9H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h3"/><path d="M12 15h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/><path d="M8 9V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4"/><path d="M11 6h.01M13 18h.01"/>',
+  powerbi: '<rect x="4" y="13" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="16" y="3" width="4" height="18" rx="1"/>',
+  excel: '<path d="M8 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8"/><path d="M14 8h4M14 12h4M14 16h4"/><rect x="3" y="6" width="9" height="12" rx="1"/><path d="M5.5 9l4 6M9.5 9l-4 6"/>',
+  aws: '<path d="M6.66 18C4.09 18 2 15.99 2 13.52s2.09-4.48 4.66-4.48c.39-1.76 1.79-3.2 3.67-3.77 1.88-.57 3.96-.19 5.44 1 1.49 1.19 2.16 3.01 1.77 4.77h.99c1.91 0 3.47 1.56 3.47 3.49S20.44 18 18.53 18H6.66z"/>',
+  stats: '<path d="M4 19h16"/><path d="M4 15l4-6 4 2 4-6 4 4"/>',
+  analytics: '<path d="M10 3.2A9 9 0 1 0 20.8 14a1 1 0 0 0-1-1H13a2 2 0 0 1-2-2V4a.9.9 0 0 0-1-.8z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H16a1 1 0 0 1-1-1V3.5z"/>'
+};
+const iconSvg = (name) => ICONS[name]
+  ? `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>` : "";
+
 function renderSkills() {
+  $("#tool-strip").innerHTML = (P.toolStrip || []).map(t =>
+    `<span class="tool">${iconSvg(t.icon)}${esc(t.name)}</span>`).join("");
   $("#skill-rows").innerHTML = P.technicalSkills.map(s => `
     <div class="skill-row">
-      <h3>${esc(s.name)}</h3>
+      <h3>${iconSvg(s.icon)}${esc(s.name)}</h3>
       <div class="chips">${s.items.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div>
     </div>`).join("");
 }
