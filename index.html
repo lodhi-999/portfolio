@@ -125,12 +125,24 @@ nav {
 
 /* ================= HERO ================= */
 .hero { min-height: 92vh; display: flex; align-items: center; padding-top: 120px; }
-.hero-grid { display: block; }
+.hero-grid { display: block; width: 100%; }
 .hero-role { color: var(--accent); font-size: 19px; font-style: italic; margin-bottom: 14px; }
 .hero h1 { font-size: clamp(52px, 8vw, 88px); line-height: 1; color: var(--ink); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 22px; }
 .hero-tools { font-size: 22px; color: var(--ink-2); margin-bottom: 18px; }
 .hero-intro { max-width: 600px; color: var(--muted); font-size: 19px; margin-bottom: 34px; }
 .buttons { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* "Open to" roles line */
+.open-to {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 10px;
+  background: var(--detail); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 10px 16px; margin-bottom: 30px; max-width: 100%;
+}
+.open-to .label { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); font-size: 17px; }
+.open-to .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(163,190,140,.22); }
+.open-to .role-chip { background: var(--bg); border: 1px solid #4C566A; color: var(--accent); padding: 2px 12px; border-radius: 999px; font-size: 16px; }
+.contact-open { color: var(--ink-2); margin: -10px 0 26px; }
+.contact-open strong { color: var(--ink); }
 
 /* ================= ABOUT ================= */
 .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; }
@@ -430,6 +442,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
       <h1 data-bind="name"></h1>
       <p class="hero-tools" data-bind="headline"></p>
       <p class="hero-intro" data-bind="intro"></p>
+      <div class="open-to" id="open-to"></div>
       <div class="buttons">
         
         
@@ -561,6 +574,7 @@ footer { border-top: 1px solid var(--line); padding: 28px; text-align: center; c
         <h2>Let's connect</h2>
       </div>
       <p>Have a data problem, a role, or a question about my work? Send a message or reach me directly.</p>
+      <p class="contact-open" id="contact-open"></p>
       <ul class="contact-lines">
         <li><span class="k">Email</span><a data-href="mailto" data-bind="email"></a></li>
         <li><span class="k">Phone</span><a data-href="tel" data-bind="phone"></a></li>
@@ -618,6 +632,10 @@ const PORTFOLIO = {
   headline: "",
   intro: "I turn raw data into clear dashboards, sound analysis and decisions a business can act on, using statistics and plain-language storytelling.",
 
+  // ---- Roles you're looking for (shown at the top and in Contact) ----
+  // Leave the list empty [] to hide the line.
+  openTo: ["Product Analyst", "Data Analyst", "Business Analyst", "Data Science"],
+
   // ---- Contact (REPLACE WITH YOUR REAL DETAILS) ----
   email: "lodhigaurav999@gmail.com",        // messages from the form are delivered here
   phone: "+91 7987350900",
@@ -660,10 +678,9 @@ const PORTFOLIO = {
 
   technicalSkills: [
     { name: "SQL",        icon: "sql",       items: ["MySQL", "Joins", "CTEs", "Subqueries", "Window functions", "Aggregations"] },
-    { name: "Python",     icon: "python",    items: ["Pandas", "NumPy", "Matplotlib", 'Seaborn' , "Scikit-learn", "Data cleaning", "EDA"] },
+    { name: "Python",     icon: "python",    items: ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "Data cleaning", "EDA"] },
     { name: "Power BI",   icon: "powerbi",   items: ["Data modelling", "DAX", "KPI dashboards", "Business reporting"] },
     { name: "Excel",      icon: "excel",     items: ["Pivot tables", "XLOOKUP / VLOOKUP", "SUMIFS", "Data cleaning", "Reporting"] },
-    // AWS: edit the list to the services you have actually used
     { name: "AWS",        icon: "aws",       items: ["Amazon SageMaker", "Amazon S3", "CPU/GPU instance selection"] },
     { name: "Statistics", icon: "stats",     items: ["Regression", "Hypothesis testing", "Correlation", "Clustering" ,"Time Series Analysis"] },
     { name: "Analytics",  icon: "analytics", items: ["Customer analytics", "Marketing analytics", "Funnel analysis", "Cohort analysis"] }
@@ -835,6 +852,18 @@ function bindBasics() {
   document.querySelectorAll("[data-href]").forEach(el => { el.href = links[el.dataset.href]; });
 
   $("#footer").textContent = `© ${new Date().getFullYear()} ${P.name}, Data Analyst`;
+
+  // "Open to" roles
+  const roles = P.openTo || [];
+  if (roles.length) {
+    $("#open-to").innerHTML = `<span class="label"><span class="dot" aria-hidden="true"></span>Open to roles:</span>` +
+      roles.map(r => `<span class="role-chip">${esc(r)}</span>`).join("");
+    const list = roles.length > 1 ? roles.slice(0, -1).join(", ") + " and " + roles[roles.length - 1] : roles[0];
+    $("#contact-open").innerHTML = `<strong>Currently looking for:</strong> ${esc(list)} roles.`;
+  } else {
+    $("#open-to").remove();
+    $("#contact-open").remove();
+  }
 }
 
 function renderAbout() {
